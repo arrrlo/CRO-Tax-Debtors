@@ -35,3 +35,4 @@ def save_data(remote_url):
 
 if __name__ == "__main__":
     save_data('http://duznici.porezna-uprava.hr/fo/svi/1.html')
+    # ovdje naslazi ostale stranice ili sliozi neki drugi algoritam kako ces prolazit kroz stranice
