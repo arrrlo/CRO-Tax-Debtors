@@ -31,7 +31,8 @@ def save_data(remote_url):
 						userData[fields[i]] = td.text_content().strip(' \t\n\r')
 						# podaci
 					usersData.append(userData)
-	print usersData
+	#print usersData
+	# ovdje upisi podatke u bazu na koji god nacin zelis, sve je u userData varijabli
 
 if __name__ == "__main__":
     save_data('http://duznici.porezna-uprava.hr/fo/svi/1.html')
