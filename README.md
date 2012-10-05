@@ -1,2 +1,2 @@
-parser-za-popis-duznika---python
-================================
+Parsing script for Croatian tax debtors website
+===============================================
