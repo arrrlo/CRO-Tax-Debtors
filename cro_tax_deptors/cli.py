@@ -13,12 +13,12 @@ def cli(ctx):
         'data': [
             {
                 # website specific, don't change
-                'title': 'Fizicke osobe',
                 'item': 'ime i prezime',
                 'dept_key': 'ukupni iznos duga',
                 'url': 'http://duznici.porezna-uprava.hr/fo/svi/{}.html',
 
                 # your database specific, change as you like
+                'title': 'Fizičke osobe',
                 'namespace': 'FIZICKE-OSOBE',
                 'toplist_limit': 20,
                 'color': 'blue',
@@ -33,12 +33,12 @@ def cli(ctx):
             },
             {
                 # website specific, don't change
-                'title': 'Pravne osobe',
                 'item': 'naziv pravne osobe',
                 'dept_key': 'ukupni iznos duga',
                 'url': 'http://duznici.porezna-uprava.hr/po/svi/{}.html',
 
                 # your database specific, change as you like
+                'title': 'Pravne osobe',
                 'namespace': 'PRAVNE-OSOBE',
                 'toplist_limit': 20,
                 'color': 'red',
@@ -53,12 +53,12 @@ def cli(ctx):
             },
             {
                 # website specific, don't change
-                'title': 'Gradjani',
                 'item': 'ime i prezime',
                 'dept_key': 'ukupni iznos duga',
                 'url': 'http://duznici.porezna-uprava.hr/gr/svi/{}.html',
 
                 # your database specific, change as you like
+                'title': 'Građani',
                 'namespace': 'GRADJANI',
                 'toplist_limit': 20,
                 'color': 'green',
