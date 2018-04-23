@@ -1,6 +1,6 @@
 <h1>Cro Tax Deptors</h1>
 
-
+[![PyPI version](https://badge.fury.io/py/CRO-Tax-Deptors.svg)](https://badge.fury.io/py/CRO-Tax-Deptors)
 
 <p>Parse and search data from Croatian Tax Deptors website.</p>
 
