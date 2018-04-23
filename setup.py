@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='CRO Tax Debtors',
-    version='0.3.3',
+    version='0.3.4',
 
     description='List of Croatian tax debtors',
     long_description=readme(),
@@ -41,6 +41,7 @@ setup(
         'pyfiglet~=0.7.5',
         'termcolor~=1.1.0',
         'progress >= 1.2, < 1.3',
+        'six~=1.11.0',
     ],
     entry_points={
         'console_scripts': [

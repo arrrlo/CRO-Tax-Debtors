@@ -1,3 +1,4 @@
+import six
 import click
 
 from cro_tax_debtors.screen import Screen
@@ -18,7 +19,7 @@ def cli(ctx):
                 'url': 'http://duznici.porezna-uprava.hr/fo/svi/{}.html',
 
                 # your database specific, change as you like
-                'title': 'Fizičke osobe',
+                'title': 'Fizicke osobe',
                 'namespace': 'FIZICKE-OSOBE',
                 'toplist_limit': 20,
                 'color': 'blue',
@@ -58,7 +59,7 @@ def cli(ctx):
                 'url': 'http://duznici.porezna-uprava.hr/gr/svi/{}.html',
 
                 # your database specific, change as you like
-                'title': 'Građani',
+                'title': 'Gradjani',
                 'namespace': 'GRADJANI',
                 'toplist_limit': 20,
                 'color': 'green',

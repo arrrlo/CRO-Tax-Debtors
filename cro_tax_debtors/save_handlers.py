@@ -3,17 +3,17 @@ from progress.bar import Bar
 from db_transfer import Transfer
 
 
-class RedisTransfer(Transfer):
+class RedisTransfer(Transfer, object):
 
     def __init__(self, prefix, namespace, host, port, db):
-        super().__init__(prefix=str(prefix), namespace=namespace, adapter_name='redis')
+        super(RedisTransfer, self).__init__(prefix=str(prefix), namespace=namespace, adapter_name='redis')
 
         self.set_env('HOST', host)
         self.set_env('PORT', port)
         self.set_env('DB', db)
 
 
-class Handler:
+class Handler(object):
 
     _connection = {}
 

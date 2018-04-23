@@ -1,9 +1,28 @@
 import re
+import six
 import requests
 import lxml.html as lxml_html
-from io import StringIO
 
 from .debtors import Item, CategoryDone
+
+
+if six.PY2:
+    import unidecode
+    from StringIO import StringIO
+
+    def prepare_content(response):
+        return response.content
+
+    def to_str(_text):
+        return unidecode.unidecode(_text)
+else:
+    from io import StringIO
+
+    def prepare_content(response):
+        return str(response.content.decode('utf-8'))
+
+    def to_str(_text):
+        return _text
 
 
 class Spider:
@@ -20,7 +39,7 @@ class CroTaxDepartment(Spider):
         except:
             yield None
 
-        html_parsed = lxml_html.parse(StringIO(str(response.content.decode('utf-8'))))
+        html_parsed = lxml_html.parse(StringIO(prepare_content(response)))
 
         is_done = True
         for table in html_parsed.iter('table'):
@@ -29,7 +48,7 @@ class CroTaxDepartment(Spider):
                 for tr in table.iter('tr'):
                     if tr.attrib.has_key('class') and tr.attrib['class'] == 'tableHeader':
                         for td in tr.iter('td'):
-                            field_name = td.text_content().strip(' \t\n\r').lower()
+                            field_name = to_str(td.text_content()).strip(' \t\n\r').lower()
                             fields.append(field_name)
                     else:
                         item = Item()
