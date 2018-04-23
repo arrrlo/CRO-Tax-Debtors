@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='CRO Tax Debtors',
-    version='0.3.0',
+    version='0.3.1',
 
     description='List of Croatian tax debtors',
     long_description=readme(),
