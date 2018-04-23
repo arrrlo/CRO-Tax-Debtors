@@ -39,6 +39,7 @@ setup(
         'python-slugify~=1.2.5',
         'pyfiglet~=0.7.5',
         'termcolor~=1.1.0',
+        'progress >= 1.2, < 1.3',
     ],
     entry_points={
         'console_scripts': [

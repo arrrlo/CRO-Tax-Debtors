@@ -13,20 +13,20 @@ class Screen:
             'colors': {}
         }
 
-    def __call__(self, category, name, dept, toplist_limit, color):
-        self.set_toplist(category, name, dept, toplist_limit)
+    def __call__(self, category, name, dept, limit, color):
+        self.set_toplist(category, name, dept, limit)
         self.set_counter(category)
         self.set_color(category, color)
-        self._print(toplist_limit)
+        self._print(limit)
 
-    def set_toplist(self, category, name, dept, toplist_limit):
+    def set_toplist(self, category, name, dept, limit):
         if category not in self.data['toplist']:
             self.data['toplist'][category] = []
 
         self.data['toplist'][category].append((name, dept))
 
         sorted(self.data['toplist'][category], key=lambda deptor: deptor[1])
-        if len(self.data['toplist'][category]) > toplist_limit:
+        if len(self.data['toplist'][category]) > limit:
             self.data['toplist'][category].pop()
 
         if category not in self.data['width']:
@@ -46,8 +46,9 @@ class Screen:
     def set_color(self, category, color):
         self.data['colors'][category] = color
 
-    def _print(self, toplist_limit):
+    def _print(self, limit):
         click.clear()
+
         cprint(figlet_format('Croatian Tax Deptors', width=120), 'red')
         click.secho(' '*80 + 'by Ivan Arar', fg='red')
 
@@ -55,7 +56,12 @@ class Screen:
 
         categories = self.data['counters'].keys()
         number_of_categories = len(categories)
-        screen_width = sum([self.data['width'][cat]+20 for cat in self.data['width'].keys()])
+
+        screen_line_parts = []
+        for cat in self.data['width'].keys():
+            screen_line_parts.append('-'*(self.data['width'][cat]+16))
+            screen_line_parts.append(' '*4)
+        screen_line = ''.join(screen_line_parts)
 
         for i, category in enumerate(categories):
             cat_width = self.data['width'][category]+20
@@ -65,9 +71,9 @@ class Screen:
             category += ' (' + str(self.data['counters'][category]) + ')'
             click.secho(category.upper() + (' '*(cat_width-len(category))), nl=nl, fg=color)
 
-        click.echo('-'*screen_width)
+        click.echo(screen_line)
 
-        for j in range(toplist_limit):
+        for j in range(limit):
             for i, category in enumerate(categories):
 
                 if len(self.data['toplist'][category]) <= j:
@@ -81,5 +87,5 @@ class Screen:
                 line = deptor[0] + ': ' + (' '*(cat_width-len(deptor[0]))) + deptor[1]
                 click.secho(line + ' '*((cat_width+20)-len(line)), nl=nl, fg=color)
 
-        click.echo('-'*screen_width)
+        click.echo(screen_line)
         click.echo()

@@ -1,4 +1,5 @@
 from slugify import slugify
+from progress.bar import Bar
 from db_transfer import Transfer
 
 
@@ -42,3 +43,23 @@ class RedisHandler(Handler):
             conn[item] = data
 
         return data[self._category_data['item']], data[self._category_data['dept_key']]
+
+    def find(self, name):
+        data = self.connection[slugify(name)]
+        if data:
+            return [dict(data), ]
+        else:
+            return []
+
+    def find_by_key(self, name):
+        name = slugify(name)
+        for key in self.connection.keys():
+            if name in key:
+                yield dict(self.connection[key])
+
+    def delete(self):
+        keys = self.connection.keys()
+        bar = Bar('Deleting "' + self._category_data['title'] + '" from redis', max=len(keys))
+        for key in keys:
+            del self.connection[key]
+            bar.next()
