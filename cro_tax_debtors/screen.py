@@ -13,26 +13,26 @@ class Screen:
             'colors': {}
         }
 
-    def __call__(self, category, name, dept, limit, color):
-        self.set_toplist(category, name, dept, limit)
+    def __call__(self, category, name, debt, limit, color):
+        self.set_toplist(category, name, debt, limit)
         self.set_counter(category)
         self.set_color(category, color)
         self._print(limit)
 
-    def set_toplist(self, category, name, dept, limit):
+    def set_toplist(self, category, name, debt, limit):
         if category not in self.data['toplist']:
             self.data['toplist'][category] = []
 
-        self.data['toplist'][category].append((name, dept))
+        self.data['toplist'][category].append((name, debt))
 
-        sorted(self.data['toplist'][category], key=lambda deptor: deptor[1])
+        sorted(self.data['toplist'][category], key=lambda debtor: debtor[1])
         if len(self.data['toplist'][category]) > limit:
             self.data['toplist'][category].pop()
 
         if category not in self.data['width']:
             self.data['width'][category] = 0
 
-        for name, dept in self.data['toplist'][category]:
+        for name, debt in self.data['toplist'][category]:
             w = len(name)
             if w > self.data['width'][category]:
                 self.data['width'][category] = w
@@ -49,7 +49,7 @@ class Screen:
     def _print(self, limit):
         click.clear()
 
-        cprint(figlet_format('Croatian Tax Deptors', width=120), 'red')
+        cprint(figlet_format('Croatian Tax Debtors', width=120), 'red')
         click.secho(' '*80 + 'by Ivan Arar', fg='red')
 
         click.echo()
@@ -83,8 +83,8 @@ class Screen:
                 nl = True if i+1 >= number_of_categories else False
 
                 color = self.data['colors'][category]
-                deptor = self.data['toplist'][category][j]
-                line = deptor[0] + ': ' + (' '*(cat_width-len(deptor[0]))) + deptor[1]
+                debtor = self.data['toplist'][category][j]
+                line = debtor[0] + ': ' + (' '*(cat_width-len(debtor[0]))) + debtor[1]
                 click.secho(line + ' '*((cat_width+20)-len(line)), nl=nl, fg=color)
 
         click.echo(screen_line)

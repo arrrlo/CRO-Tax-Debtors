@@ -1,9 +1,9 @@
 import click
 
-from cro_tax_deptors.screen import Screen
-from cro_tax_deptors.spiders import CroTaxDepartment
-from cro_tax_deptors.save_handlers import RedisHandler
-from cro_tax_deptors.deptors import Deptors, CategoryDone
+from cro_tax_debtors.screen import Screen
+from cro_tax_debtors.spiders import CroTaxDepartment
+from cro_tax_debtors.save_handlers import RedisHandler
+from cro_tax_debtors.debtors import Debtors, CategoryDone
 
 
 @click.group()
@@ -14,7 +14,7 @@ def cli(ctx):
             {
                 # website specific, don't change
                 'item': 'ime i prezime',
-                'dept_key': 'ukupni iznos duga',
+                'debt_key': 'ukupni iznos duga',
                 'url': 'http://duznici.porezna-uprava.hr/fo/svi/{}.html',
 
                 # your database specific, change as you like
@@ -34,7 +34,7 @@ def cli(ctx):
             {
                 # website specific, don't change
                 'item': 'naziv pravne osobe',
-                'dept_key': 'ukupni iznos duga',
+                'debt_key': 'ukupni iznos duga',
                 'url': 'http://duznici.porezna-uprava.hr/po/svi/{}.html',
 
                 # your database specific, change as you like
@@ -54,7 +54,7 @@ def cli(ctx):
             {
                 # website specific, don't change
                 'item': 'ime i prezime',
-                'dept_key': 'ukupni iznos duga',
+                'debt_key': 'ukupni iznos duga',
                 'url': 'http://duznici.porezna-uprava.hr/gr/svi/{}.html',
 
                 # your database specific, change as you like
@@ -87,7 +87,7 @@ def parse(ctx, print_in_terminal):
             try:
                 spider = category['spider'](category['url'].format(page))
                 save_handler = category['save_handler'](category)
-                Deptors(spider, save_handler, screen, category).run(print_in_terminal)
+                Debtors(spider, save_handler, screen, category).run(print_in_terminal)
 
             except CategoryDone:
                 break
@@ -95,14 +95,14 @@ def parse(ctx, print_in_terminal):
 
 @cli.command()
 @click.pass_context
-@click.option('-n', '--name', help='Name of the deptor')
+@click.option('-n', '--name', help='Name of the debtor')
 def find(ctx, name):
 
     screen = Screen()
 
     for category in ctx.obj['data']:
         save_handler = category['save_handler'](category)
-        Deptors(save_handler=save_handler, screen=screen, category_data=category).find(name)
+        Debtors(save_handler=save_handler, screen=screen, category_data=category).find(name)
 
 
 @cli.command()
@@ -111,6 +111,6 @@ def delete(ctx):
 
     for category in ctx.obj['data']:
         save_handler = category['save_handler'](category)
-        res = Deptors(save_handler=save_handler, category_data=category).delete()
+        res = Debtors(save_handler=save_handler, category_data=category).delete()
 
     click.echo()

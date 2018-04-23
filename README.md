@@ -1,20 +1,20 @@
-<h1>Cro Tax Deptors</h1>
+<h1>Cro Tax Debtors</h1>
 
-[![PyPI version](https://badge.fury.io/py/CRO-Tax-Deptors.svg)](https://badge.fury.io/py/CRO-Tax-Deptors)
+[![PyPI version](https://badge.fury.io/py/CRO-Tax-Debtors.svg)](https://badge.fury.io/py/CRO-Tax-Debtors)
 
-<p>Parse and search data from Croatian Tax Deptors website.</p>
+<p>Parse and search data from Croatian Tax Debtors website.</p>
 
 <h2>Installation</h2>
 
 
 ```
-pip install cro-tax-deptors
+pip install cro-tax-debtors
 ```
 
 <h2>CLI</h2>
 
 ```
-Usage: crotaxdeptors [OPTIONS] COMMAND [ARGS]...
+Usage: crotaxdebtors [OPTIONS] COMMAND [ARGS]...
 
 Options:
   --help  Show this message and exit.
@@ -27,7 +27,7 @@ Commands:
 <p>Parse data from website:</p>
 
 ```
-Usage: crotaxdeptors parse [OPTIONS]
+Usage: crotaxdebtors parse [OPTIONS]
 
 Options:
   -p, --print_in_terminal  Print in terminal
@@ -37,17 +37,17 @@ Options:
 <p>Search through scraped data:</p>
 
 ```
-Usage: crotaxdeptors find [OPTIONS]
+Usage: crotaxdebtors find [OPTIONS]
 
 Options:
-  -n, --name TEXT  Name of the deptor
+  -n, --name TEXT  Name of the debtor
   --help           Show this message and exit.
 ```
 
 <p>Delete all data:</p>
 
 ```
-Usage: crotaxdeptors delete [OPTIONS]
+Usage: crotaxdebtors delete [OPTIONS]
 
 Options:
   --help           Show this message and exit.

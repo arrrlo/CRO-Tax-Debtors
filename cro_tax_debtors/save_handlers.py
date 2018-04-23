@@ -22,7 +22,7 @@ class Handler:
 
     @property
     def connection(self):
-        key = 'deptors:' + self._category_data['namespace']
+        key = 'debtors:' + self._category_data['namespace']
         if key not in self._connection:
             self._connection[key] = self._handler_connection()
 
@@ -32,7 +32,7 @@ class Handler:
 class RedisHandler(Handler):
 
     def _handler_connection(self):
-        return RedisTransfer('deptors',
+        return RedisTransfer('debtors',
                              self._category_data['namespace'],
                              **self._category_data['connection'])
 
@@ -42,7 +42,7 @@ class RedisHandler(Handler):
             del conn[item]
             conn[item] = data
 
-        return data[self._category_data['item']], data[self._category_data['dept_key']]
+        return data[self._category_data['item']], data[self._category_data['debt_key']]
 
     def find(self, name):
         data = self.connection[slugify(name)]

@@ -7,14 +7,14 @@ def readme():
 
 
 setup(
-    name='CRO Tax Deptors',
-    version='0.2.0',
+    name='CRO Tax Debtors',
+    version='0.2.1',
 
     description='List of Croatian tax debtors',
     long_description=readme(),
     long_description_content_type='text/markdown',
 
-    url='https://github.com/arrrlo/CRO-Tax-Deptors',
+    url='https://github.com/arrrlo/CRO-Tax-Debtors',
     licence='MIT',
 
     author='Ivan Arar',
@@ -29,7 +29,7 @@ setup(
     ],
     keywords='croatia, tax, debt',
 
-    packages=['cro_tax_deptors'],
+    packages=['cro_tax_debtors'],
     install_requires=[
         'click~=6.7',
         'colorama~=0.3',
@@ -43,11 +43,11 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'crotaxdeptors=cro_tax_deptors.cli:cli'
+            'crotaxdebtors=cro_tax_debtors.cli:cli'
         ],
     },
 
     project_urls={
-        'Source': 'https://github.com/arrrlo/CRO-Tax-Deptors',
+        'Source': 'https://github.com/arrrlo/CRO-Tax-Debtors',
     },
 )

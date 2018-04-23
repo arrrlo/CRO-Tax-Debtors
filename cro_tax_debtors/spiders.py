@@ -3,7 +3,7 @@ import requests
 import lxml.html as lxml_html
 from io import StringIO
 
-from .deptors import Item, CategoryDone
+from .debtors import Item, CategoryDone
 
 
 class Spider:

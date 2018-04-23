@@ -1,4 +1,4 @@
-class Deptors:
+class Debtors:
 
     def __init__(self, spider=None, save_handler=None,
                  screen=None, category_data=None):
@@ -7,31 +7,31 @@ class Deptors:
         self._save_handler = save_handler
         self._category_data = category_data
 
-    def screener(self, name, dept):
+    def screener(self, name, debt):
         self._screen(category=self._category_data['title'],
                      name=name,
-                     dept=dept,
+                     debt=debt,
                      limit=self._category_data['toplist_limit'],
                      color=self._category_data['color'])
 
     def run(self, print_in_terminal=True):
         for item in self._spider.parse():
 
-            # save deptor
-            name, dept = self._save_handler.save(item.data)
+            # save debtor
+            name, debt = self._save_handler.save(item.data)
 
             # print everything on terminal
             if print_in_terminal:
-                self.screener(name, dept)
+                self.screener(name, debt)
 
     def find(self, name):
-        for deptor in self._save_handler.find(name):
-            self.screener(deptor[self._category_data['item']],
-                          deptor[self._category_data['dept_key']])
+        for debtor in self._save_handler.find(name):
+            self.screener(debtor[self._category_data['item']],
+                          debtor[self._category_data['debt_key']])
 
-        for deptor in self._save_handler.find_by_key(name):
-            self.screener(deptor[self._category_data['item']],
-                          deptor[self._category_data['dept_key']])
+        for debtor in self._save_handler.find_by_key(name):
+            self.screener(debtor[self._category_data['item']],
+                          debtor[self._category_data['debt_key']])
 
     def delete(self):
         self._save_handler.delete()
