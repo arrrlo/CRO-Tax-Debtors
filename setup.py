@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='CRO Tax Debtors',
-    version='0.2.1',
+    version='0.3.0',
 
     description='List of Croatian tax debtors',
     long_description=readme(),
@@ -25,7 +25,8 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
     ],
     keywords='croatia, tax, debt',
 
@@ -33,7 +34,7 @@ setup(
     install_requires=[
         'click~=6.7',
         'colorama~=0.3',
-        'db-transfer~=0.3.3',
+        'db-transfer~=0.4.4',
         'requests~=2.18.4',
         'lxml==4.2.1',
         'python-slugify~=1.2.5',
