@@ -1,4 +1,4 @@
-class Debtors:
+class Debtors(object):
 
     def __init__(self, spider=None, save_handler=None,
                  screen=None, category_data=None):

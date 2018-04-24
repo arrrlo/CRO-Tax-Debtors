@@ -3,7 +3,7 @@ from termcolor import cprint
 from pyfiglet import figlet_format
 
 
-class Screen:
+class Screen(object):
 
     def __init__(self):
         self.data = {

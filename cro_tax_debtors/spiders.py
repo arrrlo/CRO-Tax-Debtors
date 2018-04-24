@@ -25,7 +25,7 @@ else:
         return _text
 
 
-class Spider:
+class Spider(object):
 
     def __init__(self, url):
         self._url = url
