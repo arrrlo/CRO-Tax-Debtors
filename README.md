@@ -13,13 +13,18 @@ pip install cro-tax-debtors
 
 <h2>CLI</h2>
 
+<p>file_path parameter is a path to yaml file with the source definition.<br/>
+Check websites.yaml for definition structure.</p>
+
 ```
 Usage: crotaxdebtors [OPTIONS] COMMAND [ARGS]...
 
 Options:
-  --help  Show this message and exit.
+  -f, --file_path FILENAME  Input YAML file
+  --help                    Show this message and exit.
 
 Commands:
+  delete
   find
   parse
 ```

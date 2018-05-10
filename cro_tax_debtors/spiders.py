@@ -1,4 +1,3 @@
-import re
 import six
 import requests
 import lxml.html as lxml_html
