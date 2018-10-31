@@ -1,1 +1,6 @@
 *.pyc
+/.idea/
+/CRO_Tax_Debtors.egg-info/
+/build/
+/dist/
+/porezni-duznici.yaml
