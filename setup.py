@@ -36,7 +36,7 @@ setup(
         'colorama~=0.3',
         'db-transfer~=0.5.0',
         'requests~=2.20.0',
-        'lxml==4.2.1',
+        'lxml==4.9.1',
         'python-slugify~=1.2.5',
         'pyfiglet~=0.7.5',
         'termcolor~=1.1.0',
